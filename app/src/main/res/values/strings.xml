@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Crypyo Compare</string>
+    <string name="textview">TEXTVIEW</string>
+
+    <string name="title_activity_splash">splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="bitcoin">BitCoin</string>
+
+    <string-array name="cryptoIso">
+
+        <item> BTC </item>
+        <item> ETH </item>
+
+    </string-array>
+
+    <string-array name="crypto">
+
+        <item> BitCoin </item>
+        <item> Etherium </item>
+
+    </string-array>
+
+    <string-array name="currency">
+
+        <item> Algerian Dinar </item>
+        <item> Burundi Franc </item>
+        <item> CFA franc </item>
+        <item> Chad CFA franc </item>
+        <item> Egyptian Pound </item>
+        <item> Ethiopian Birr </item>
+        <item> Ghanaian Cedi </item>
+        <item> Kenyan Shilling </item>
+        <item> Kwanza </item>
+        <item> Loti </item>
+        <item> Mauritian Rupee </item>
+        <item> Moroccan Dirham </item>
+        <item> Naira </item>
+        <item> Namibian Dollar </item>
+        <item> Pula </item>
+        <item> Rwandan Franc </item>
+        <item> South African Rand </item>
+        <item> Tanzanian Shilling </item>
+        <item> Ugandan Shilling </item>
+        <item> Zambian Kwacha </item>
+
+    </string-array>
+
+    <string-array name="ISO">
+
+        <item> DZD </item>
+        <item> BIF </item>
+        <item> XAF </item>
+        <item> XOF </item>
+        <item> EGP </item>
+        <item> ETB </item>
+        <item> GHS </item>
+        <item> KES </item>
+        <item> AOA </item>
+        <item> LSL </item>
+        <item> MUR </item>
+        <item> MAD </item>
+        <item> NGN </item>
+        <item> NAD </item>
+        <item> BWP </item>
+        <item> RWF </item>
+        <item> ZAR </item>
+        <item> TZS </item>
+        <item> UGX </item>
+        <item> ZMW </item>
+    </string-array>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
