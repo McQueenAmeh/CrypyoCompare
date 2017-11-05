@@ -146,7 +146,7 @@ public class home_page extends Activity implements AdapterView.OnItemSelectedLis
 
                 mDialog.dismiss();
                 new BackGround(home_page.this, con, cont).execute();
-                progressDialog = ProgressDialog.show(home_page.this, "Loading", "Refreshing Data");
+                progressDialog = ProgressDialog.show(home_page.this, "Loading", "Retrieving Data");
 
                 Thread timer = new Thread(){
                     public void run(){
