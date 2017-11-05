@@ -2,6 +2,8 @@
 
 Please Clone rather than download ZIP... I'm not sure (cuss I'm still very new to GitHub) but the zip file doesn't seem to contain all the files. If you know how i can do that please comment. 
 
+Also, i realised i had a huge problem trying to post the APK online... After i posted it, i tried downloading it again but it wasn't working well. Please, don't be offended. 
+
 This project is done for the Andela Assesment.
 
 It's main function is to get data -- Cryptocurrency equivalent of Bitcoin or Etherium with respect to any 20 African currencies -- from 
