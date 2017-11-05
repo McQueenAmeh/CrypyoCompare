@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crypyo Compare</string>
+    <string name="app_name">Crypto Compare</string>
     <string name="textview">TEXTVIEW</string>
 
     <string name="title_activity_splash">splash</string>
