@@ -26,20 +26,11 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/textView"
-        android:background="@drawable/thisq1"
+        android:background="@drawable/myut8"
         android:textColor="@color/white"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:layout_marginBottom="32dp"
-        android:layout_above="@+id/textView5"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="146dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CRYPYOCOMPARE"
-        android:textColor="@color/green"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:id="@+id/textView5"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>
