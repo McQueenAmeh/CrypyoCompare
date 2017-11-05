@@ -27,7 +27,6 @@ public class splash extends AppCompatActivity {
     private Intent i;
     private String data = "";
     private int stuff = 0;
-    private int stuf = 0;
     private ArrayList<String> name = new ArrayList<>();
     private ArrayList<String> value = new ArrayList<>();
     private ArrayList<String> currency = new ArrayList<>();
@@ -126,7 +125,6 @@ public class splash extends AppCompatActivity {
                     stuff = 1;
                 else {
                     stuff = 2;
-                    stuf++;
                 }
 
                 String price1 = jsonObject5.getString("PRICE");

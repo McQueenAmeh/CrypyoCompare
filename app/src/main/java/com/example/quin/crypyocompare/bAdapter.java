@@ -15,7 +15,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -67,7 +66,6 @@ class bAdapter extends BaseAdapter {
         final TextView currencyValue = (TextView) convertView.findViewById(R.id.currencyValue);
         final CardView cardView = (CardView) convertView.findViewById(R.id.cardView);
         final RelativeLayout rL = (RelativeLayout) convertView.findViewById(R.id.rL);
-        final Spinner spinner = (Spinner) convertView.findViewById(R.id.spinner);
 
         bitCoin.setText( name.get(position));
         currency.setText(curren.get(position));
