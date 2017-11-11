@@ -10,7 +10,10 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/ash"
+    app:theme="@style/AppTheme"
     tools:context="com.example.quin.crypyocompare.home_page">
+
+
 
     <Button
         android:layout_width="75dp"
@@ -27,7 +30,9 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swipeRefreshLayout">
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ListView
             android:layout_width="match_parent"
@@ -35,13 +40,11 @@
             android:id="@+id/listView"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="15dp"
-            >
+            android:layout_marginBottom="15dp">
 
         </ListView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
 
 
 </RelativeLayout>

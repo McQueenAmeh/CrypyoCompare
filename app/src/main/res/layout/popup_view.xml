@@ -20,9 +20,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cryptoSpinner"
-                android:layout_alignStart="@+id/textView3"
+                android:layout_alignStart="@+id/cryptoCurrencyTextView"
                 android:layout_marginTop="30dp"
-                android:id="@+id/textView4" />
+                android:id="@+id/currencyTextView" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:paddingTop="10dp"
                 android:layout_marginTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_below="@+id/textView3"
+                android:layout_below="@+id/cryptoCurrencyTextView"
                 android:layout_alignParentStart="true" />
 
             <Spinner
@@ -41,7 +41,7 @@
                 android:paddingTop="10dp"
                 android:layout_marginTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_below="@+id/textView4"
+                android:layout_below="@+id/currencyTextView"
                 android:layout_alignParentStart="true" />
 
             <Button
@@ -62,7 +62,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:layout_marginStart="12dp"
-                android:id="@+id/textView3"
+                android:id="@+id/cryptoCurrencyTextView"
                 android:paddingTop="5dp"
                 android:layout_alignParentStart="true" />
 

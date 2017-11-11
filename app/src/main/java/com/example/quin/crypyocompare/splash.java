@@ -1,14 +1,17 @@
 package com.example.quin.crypyocompare;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Process;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,18 +33,19 @@ public class splash extends AppCompatActivity {
     private ArrayList<String> name = new ArrayList<>();
     private ArrayList<String> value = new ArrayList<>();
     private ArrayList<String> currency = new ArrayList<>();
-    private ArrayList<String> nameName = new ArrayList<>();
-    private ArrayList<String> currenCurren = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        ImageView textView = (ImageView) findViewById(R.id.textView);
         i = new Intent(this, home_page.class);
 
         Animation transit = AnimationUtils.loadAnimation(this, R.anim.transit);
+
         progressBar.startAnimation(transit);
+        textView.startAnimation(transit);
         new BackGround(this).execute();
     }
 
@@ -60,12 +64,29 @@ public class splash extends AppCompatActivity {
                         finish();
                     }}
             }; timer.start();
+
         }else{
             name.clear();value.clear();currency.clear();
-            new BackGround(this).execute();
+
+            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+            adb.setMessage("Problem connecting to server.");
+            adb.setNegativeButton("Exit", new AlertDialog.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    splash.this.finish();
+                    Process.killProcess(Process.myPid());
+                }
+            });
+            adb.setPositiveButton("Try Again", new AlertDialog.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new BackGround(splash.this).execute();
+                }
+            });
+            adb.setCancelable(false);
+            adb.show();
 
         }
-
 
     }
 
@@ -94,9 +115,6 @@ public class splash extends AppCompatActivity {
                         line = bufferedReader.readLine();
                         data += line;
                     }
-                    if (data.isEmpty() || data.equals("")){
-                        Toast.makeText(activity,"Network Proble", Toast.LENGTH_SHORT).show();
-                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -109,17 +127,13 @@ public class splash extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-
             try{
                 JSONObject jsonObject = new JSONObject(data);
                 JSONObject jsonObject1 = jsonObject.getJSONObject("RAW");
                 JSONObject jsonObject2 = jsonObject1.getJSONObject("BTC");
                 JSONObject jsonObject3 = jsonObject2.getJSONObject("NGN");
-                JSONObject jsonObject4 = jsonObject1.getJSONObject("ETH");
-                JSONObject jsonObject5 = jsonObject4.getJSONObject("NGN");
 
                 String price = jsonObject3.getString("PRICE");
-                String naira = "Naira";
 
                 if (!price.isEmpty())
                     stuff = 1;
@@ -127,28 +141,11 @@ public class splash extends AppCompatActivity {
                     stuff = 2;
                 }
 
-                String price1 = jsonObject5.getString("PRICE");
-
-
-                name.add("BitCoin");name.add("Etherium");
-                nameName.add("BTC");nameName.add("ETH");
-                currenCurren.add("NGN");currenCurren.add("NGN");
-                currency.add(naira);currency.add(naira);
-                value.add(price);value.add(price1);
-
-
             } catch ( JSONException e) {
                 e.printStackTrace();
             }
 
-            i.putStringArrayListExtra("name", name);
-            i.putStringArrayListExtra("currency", currency);
-            i.putStringArrayListExtra("value", value);
-            i.putStringArrayListExtra("bName", nameName);
-            i.putStringArrayListExtra("cCurren", currenCurren);
-
             onRestart();
-
         }
 
     }

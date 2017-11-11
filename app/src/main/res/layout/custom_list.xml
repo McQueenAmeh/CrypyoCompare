@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:id="@+id/cardView"
-        android:clickable="true"
         android:layout_marginBottom="5dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
@@ -55,17 +54,6 @@
                 android:layout_above="@+id/currencyValue"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:id="@+id/spinner"
-                android:focusableInTouchMode="false"
-                android:visibility="invisible"
-                android:layout_alignBottom="@+id/bitCoin">
-            </Spinner>
 
         </RelativeLayout>
 

@@ -19,9 +19,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cryptoEditText"
-                android:layout_alignStart="@+id/textView3"
+                android:layout_alignStart="@+id/cryptoCurrencyTextView"
                 android:layout_marginTop="30dp"
-                android:id="@+id/textView4" />
+                android:id="@+id/currencyTextView" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -31,31 +31,22 @@
                 android:inputType="numberDecimal"
                 android:layout_marginTop="5dp"
                 android:paddingBottom="5dp"
-                android:layout_below="@+id/textView3"
+                android:layout_below="@+id/cryptoCurrencyTextView"
                 android:layout_alignParentStart="true" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/currencyEditText"
+                android:id="@+id/curreCurrencyTextView"
                 android:paddingTop="10dp"
                 android:layout_marginTop="5dp"
                 android:paddingBottom="5dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:layout_below="@+id/textView4"
+                android:layout_below="@+id/currencyTextView"
                 android:layout_alignParentStart="true" />
 
-            <Button
-                android:text="DONE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:background="@drawable/button"
-                android:textColor="@color/white"
-                android:layout_below="@+id/currencyEditText"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="26dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,7 +55,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:layout_marginStart="12dp"
-                android:id="@+id/textView3"
+                android:id="@+id/cryptoCurrencyTextView"
                 android:paddingTop="5dp"
                 android:layout_alignParentStart="true" />
 
@@ -74,10 +65,11 @@
                 android:text="Switch"
                 android:clickable="true"
                 android:textColor="@color/colorAccent"
-                android:layout_alignBaseline="@+id/button2"
-                android:layout_alignBottom="@+id/button2"
-                android:layout_alignStart="@+id/textView4"
-                android:id="@+id/textView2" />
+                android:layout_below="@+id/curreCurrencyTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="26dp"
+                android:layout_alignStart="@+id/currencyTextView"
+                android:id="@+id/switchTextView" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
