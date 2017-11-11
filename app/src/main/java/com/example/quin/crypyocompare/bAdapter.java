@@ -71,6 +71,11 @@ class bAdapter extends BaseAdapter {
         mDialog2 = new Dialog(activity);
         mDialog2.setContentView(R.layout.popup2);
 
+        /* Two dialogs,
+        One for Crypto to Currency
+        and the other from currency to crypto
+         */
+
         TextView crptoCurrencyTextView = (TextView) mDialog1.findViewById(R.id.cryptoCurrencyTextView);
         EditText cryptoEditText= (EditText) mDialog1.findViewById(R.id.cryptoEditText);
         TextView currencyTextView = (TextView) mDialog1.findViewById(R.id.currencyTextView);

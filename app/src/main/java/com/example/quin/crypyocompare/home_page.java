@@ -15,14 +15,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -37,7 +35,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -45,32 +42,34 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
 
     bAdapter bAdapter;
     ListView listView;
+
     public  Spinner cryptoSpinner;
     public Spinner currencySpinner;
     ProgressDialog progressDialog;
+
+    /* These Arraylists are for two main things
+    1. To store the value of the data.
+    2. To ensure that when data is being refreshed it doesn't iterate into another item or position
+     */
     private  ArrayList<String> name = new ArrayList<>();
     private ArrayList<String> value = new ArrayList<>();
     private ArrayList<String> curren = new ArrayList<>();
-
     private ArrayList<String> nameName = new ArrayList<>();
     private ArrayList<String> currenCurren = new ArrayList<>();
-
     private ArrayList<String> nName = new ArrayList<>();
     private ArrayList<String> curen = new ArrayList<>();
 
     int coin;
     int country;
     SwipeRefreshLayout swipeRefreshLayout;
-    Boolean doubleTapBack = false;
-    Dialog mDialog, dialog;
+    Boolean doubleTapBack = false; // for on backPress
+
+    Dialog mDialog;
     String cont;
     String con;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    String[] data;
-    ArrayList<String> nMan = new ArrayList<>();
-    Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,23 +77,19 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_home_page);
         listView = (ListView) findViewById(R.id.listView);
         mDialog = new Dialog(this);
-        dialog = new Dialog(this);
 
-        this.mHandler = new Handler();
 
-        this.mHandler.postDelayed(m_Runnable, 5000);
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-
-
-        data = getResources().getStringArray(R.array.currency);
-
-        Collections.addAll(nMan, data);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+                // Swipe down to refresh
                 swipeRefreshLayout.setRefreshing(true);
+
+                name.clear();value.clear();curren.clear();
                 refresh();
             }
         });
@@ -125,17 +120,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
-    private final Runnable m_Runnable = new Runnable() {
-        @Override
-        public void run() {
-            if (name.size() > 0){
-                refresh();
-            }
-
-            home_page.this.mHandler.postDelayed(m_Runnable, 5000);
-        }
-    };
-
     public void refresh(){
         new Thread(new Runnable() {
             String line = "";
@@ -149,7 +133,7 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
                 do {
 
                     try {
-
+                        //Do in background -- Get data and parse it.
                         URL url = new URL("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" +
                                 "ETH,BTC" + "&tsyms=" +"DZD,BIF,XAF,XOF,EGP,ETB,GHS,KES,AOA,LSL,MUR,MAD,NGN,NAD,BWP,RWF,ZAR,TZS,UGX,ZMW");
                         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -162,8 +146,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
                         }
 
                         if (!data.isEmpty()){
-
-                            name.clear();value.clear();curren.clear();
 
                             JSONObject jsonObject = new JSONObject(data);
                             JSONObject jsonObject1 = jsonObject.getJSONObject("RAW");
@@ -186,9 +168,7 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
                     @Override
                     public void run() {
 
-                        if (data.isEmpty()){
-                            Toast.makeText(home_page.this,"Network Problem",Toast.LENGTH_SHORT).show();
-                        }
+                        //tell listView that something has changed
                         bAdapter.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -199,10 +179,11 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
 
     public void showDialog(View view) {
 
+        //Add new
+
         mDialog.setContentView(R.layout.popup_view);
         cryptoSpinner = (Spinner) mDialog.findViewById(R.id.cryptoSpinner);
         currencySpinner = (Spinner) mDialog.findViewById(R.id.currencySpinner);
-        TextView currencyTextView = (TextView) mDialog.findViewById(R.id.currencyTextView);
         Button button = (Button) mDialog.findViewById(R.id.button2);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -219,16 +200,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         currencySpinner.setAdapter(adapt);
-
-        currencyTextView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                return false;
-            }
-        });
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,6 +229,8 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        //for Overflow menu
 
         switch (item.getItemId()){
             case R.id.overflowAbout:
@@ -357,8 +330,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
                 value.add(price);
                 currenCurren.add(cont);
                 nameName.add(con);
-
-
 
                 progressDialog.dismiss();
 

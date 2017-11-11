@@ -16,7 +16,7 @@
     </style>
 
     <style name="titleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:titleTextColor" tools:targetApi="m">@color/white</item>
     </style>
 
     <style name="Splash" parent="Theme.AppCompat.Light">
