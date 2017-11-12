@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,8 +21,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,9 +65,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
     String cont;
     String con;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +72,14 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
         listView = (ListView) findViewById(R.id.listView);
         mDialog = new Dialog(this);
 
-
+        Bundle bundle = getIntent().getExtras();
+        name.add("BitCoin");
+        value.add(bundle.getString("value"));
+        curren.add("Nigerian Naira");
+        nameName.add("BTC");
+        currenCurren.add("NGN");
+        nName.add("BitCoin");
+        curen.add("Nigerian Naira");
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 
@@ -102,6 +103,7 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     public void onBackPressed() {
         if (doubleTapBack){
@@ -231,14 +233,15 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
     public boolean onOptionsItemSelected(MenuItem item) {
 
         //for Overflow menu
-
-        switch (item.getItemId()){
+        Intent intent;
+        switch (item.getItemId()) {
             case R.id.overflowAbout:
                 if (item.isChecked())
                     item.setChecked(false);
                 else
                     item.setChecked(true);
-                Intent intent = new Intent(this, About.class);
+
+                intent = new Intent(home_page.this, About.class);
                 startActivity(intent);
                 return true;
             default:
@@ -332,27 +335,6 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
                 nameName.add(con);
 
                 progressDialog.dismiss();
-
-                sharedPreferences = getSharedPreferences("storedData", Context.MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-
-                Gson gson = new Gson();
-
-                String json = gson.toJson(name);
-                String json1 = gson.toJson(nName);
-                String json2 = gson.toJson(curen);
-                String json3 = gson.toJson(curren);
-                String json5 = gson.toJson(currenCurren);
-                String json6 = gson.toJson(nameName);
-
-                editor.putString("name", json);
-                editor.putString("nName", json1);
-                editor.putString("curen", json2);
-                editor.putString("curren", json3);
-                editor.putString("currenCurren", json5);
-                editor.putString("nameName", json6);
-
-                editor.apply();
 
                 bAdapter.notifyDataSetChanged();
             }else {

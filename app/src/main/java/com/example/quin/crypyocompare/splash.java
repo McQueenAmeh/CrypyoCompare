@@ -22,7 +22,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class splash extends AppCompatActivity {
 
@@ -30,9 +29,7 @@ public class splash extends AppCompatActivity {
     private Intent i;
     private String data = "";
     private int stuff = 0;
-    private ArrayList<String> name = new ArrayList<>();
-    private ArrayList<String> value = new ArrayList<>();
-    private ArrayList<String> currency = new ArrayList<>();
+    private String value = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +57,15 @@ public class splash extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }finally {
+                        i.putExtra("value",value);
+
                         startActivity(i);
                         finish();
                     }}
             }; timer.start();
 
         }else{
-            name.clear();value.clear();currency.clear();
+            value = "";
 
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
             adb.setMessage("Problem connecting to server.");
@@ -133,9 +132,10 @@ public class splash extends AppCompatActivity {
                 JSONObject jsonObject2 = jsonObject1.getJSONObject("BTC");
                 JSONObject jsonObject3 = jsonObject2.getJSONObject("NGN");
 
-                String price = jsonObject3.getString("PRICE");
+                value = jsonObject3.getString("PRICE");
 
-                if (!price.isEmpty())
+
+                if (!value.isEmpty())
                     stuff = 1;
                 else {
                     stuff = 2;

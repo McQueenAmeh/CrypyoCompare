@@ -17,8 +17,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home_page"
-            android:label="CryptoCompare"/>
+        <activity
+            android:name=".home_page"
+            android:label="CryptoCompare" />
         <activity
             android:name=".splash"
             android:theme="@style/AppTheme.NoActionBar">

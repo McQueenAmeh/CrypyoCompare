@@ -75,5 +75,13 @@
     <string name="delete">Delete</string>
     <string name="about">About</string>
     <string name="more">The app retrieves cryptocurrency data of Bitcoin and Etherium and also the equivalence of any 20 african currencies.</string>
-    <string name="and">This project was done by Ameh Emmanuel and thanks to stackoverflow, youtube, google and my friends who helped me make it this way.</string>
+    <string name="and">Thanks to stackoverflow, youtube, google and my friends who helped me make this.</string>
+    <string name="add">ADD</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

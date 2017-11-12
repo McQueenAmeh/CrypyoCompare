@@ -13,8 +13,6 @@
         android:paddingTop="20dp"
         android:id="@+id/cardView"
         android:layout_marginBottom="5dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         app:cardBackgroundColor="@color/ash"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
