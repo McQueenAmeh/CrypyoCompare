@@ -68,6 +68,7 @@ class bAdapter extends BaseAdapter {
 
         mDialog1 = new Dialog(activity);
         mDialog1.setContentView(R.layout.popup);
+
         mDialog2 = new Dialog(activity);
         mDialog2.setContentView(R.layout.popup2);
 
@@ -214,7 +215,7 @@ class bAdapter extends BaseAdapter {
                             adb.show();
                             popup.dismiss();
                         }
-                        else if (item.getTitle().equals("Crypto to Currency")){
+                        else if (item.getTitle().equals("Convert Crypto to Currency")){
                             mDialog1.show();
                             popup.dismiss();
                         }

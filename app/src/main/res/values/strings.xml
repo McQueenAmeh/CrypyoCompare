@@ -70,8 +70,8 @@
         <item> ZMW </item>
     </string-array>
     <string name="title_activity_main">MainActivity</string>
-    <string name="crypto_to_currency_conversion">Crypto to Currency</string>
-    <string name="currency_to_crypto_conversion">Currency to Crypto</string>
+    <string name="crypto_to_currency_conversion">Convert Crypto to Currency</string>
+    <string name="currency_to_crypto_conversion">Convert Currency to Crypto</string>
     <string name="delete">Delete</string>
     <string name="about">About</string>
     <string name="more">The app retrieves cryptocurrency data of Bitcoin and Etherium and also the equivalence of any 20 african currencies.</string>

@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -72,6 +74,10 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
         listView = (ListView) findViewById(R.id.listView);
         mDialog = new Dialog(this);
 
+        Animation blinking_anim = AnimationUtils.loadAnimation(this, R.anim.blinking_anim);
+
+        listView.startAnimation(blinking_anim);
+
         Bundle bundle = getIntent().getExtras();
         name.add("BitCoin");
         value.add(bundle.getString("value"));
@@ -82,6 +88,9 @@ public class home_page extends AppCompatActivity implements AdapterView.OnItemSe
         curen.add("Nigerian Naira");
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(R.color.black), getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.colorAccent)
+        );
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
